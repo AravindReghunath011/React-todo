@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { Day } from './config';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       </div>
       <div className="subHeading">
         <br />
-        <h2>Whoop, it's Wednesday 🌝 ☕ </h2>
+        <h2>Whoop, it's <Day/> 🌝 ☕ </h2>
       </div>
       <div className="input">
         <input type="text" value={toDo} onChange={(e)=>setTodo(e.target.value)} placeholder="🖊️ Add item..." />
