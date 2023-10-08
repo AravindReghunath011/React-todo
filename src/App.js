@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+
 function App() {
+  const [toDo,setTodo] = useState('')
+  const [toDos,setTodos] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="mainHeading">
+        <h1>ToDo List</h1>
+      </div>
+      <div className="subHeading">
+        <br />
+        <h2>Whoop, it's Wednesday 🌝 ☕ </h2>
+      </div>
+      <div className="input">
+        <input type="text" value={toDo} onChange={(e)=>setTodo(e.target.value)} placeholder="🖊️ Add item..." />
+        <i className="fas fa-plus" onClick={()=>{
+          setTodos([...toDos,{text:toDo,status:false,id:Date.now()}])
+        }}></i>
+      </div>
+      <div className="todos">
+        {toDos.map((obj)=>(
+          <div className="todo" key={obj.id}>
+          <div className="left">
+            <input type="checkbox" value={obj.status} onChange={(e)=>setTodos(toDos.filter((obj2)=>{
+              if(obj.id === obj2.id){
+                obj.status = e.target.checked
+              }
+              console.log(obj2,'obj2')
+              console.log(obj,'hehe')
+              return true
+            }))} name="" id="" />
+            <p>{obj.text}</p>
+          </div>
+          <div className="right">
+            <i className="fas fa-times" onClick={()=>setTodos(toDos.filter((obj2)=>obj2.id!==obj.id))}></i>
+          </div>
+        </div>
+        ))}
+      </div>
     </div>
   );
 }
