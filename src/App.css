@@ -14,8 +14,9 @@
     transform: translate(-50%, -10%);
   }
   
-  .app .mainHeading h1 {
+  .app .mainHeading h1,button {
     text-align: center;
+    
   }
   
   .app h1,
@@ -85,4 +86,6 @@
     font-style: normal;
     color: grey;
   }
-  
+ .heading{
+    margin-top: 2rem;
+ }
